@@ -18,6 +18,8 @@ jobs:
     - name: Generate artifact
       run: |
         cd spring-boot-sample
+        which java
+        whereis java
         ./gradlew build
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag deepuvsdeepu/spring-boot-sample:latest
