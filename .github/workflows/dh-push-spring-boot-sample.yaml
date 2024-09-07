@@ -21,7 +21,9 @@ jobs:
         cd spring-boot-sample
         ls -ltr .
     - name: Generate artifact
-      run: ./gradlew build
+      run: |
+        ls -ltr .
+        ./gradlew build
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag deepuvsdeepu/spring-boot-sample:latest
       # $(date +%s)
