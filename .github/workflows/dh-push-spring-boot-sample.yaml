@@ -15,14 +15,9 @@ jobs:
         DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
       run: |
         docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
-    - name: Navigate to work dir
-      run: |
-        ls -ltr .
-        cd spring-boot-sample
-        ls -ltr .
     - name: Generate artifact
       run: |
-        ls -ltr .
+        cd spring-boot-sample
         ./gradlew build
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag deepuvsdeepu/spring-boot-sample:latest
