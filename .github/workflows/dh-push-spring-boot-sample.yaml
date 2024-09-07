@@ -2,7 +2,7 @@ name: Spring boot sample push to Docker Hub
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "main", "develop" ]
 
 jobs:
   build:
@@ -16,7 +16,10 @@ jobs:
       run: |
         docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
     - name: Navigate to work dir
-      run: cd spring-boot-sample
+      run: |
+        ls -ltr .
+        cd spring-boot-sample
+        ls -ltr .
     - name: Generate artifact
       run: ./gradlew build
     - name: Build the Docker image
