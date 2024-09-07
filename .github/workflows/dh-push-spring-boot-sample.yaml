@@ -2,7 +2,10 @@ name: Spring boot sample push to Docker Hub
 
 on:
   push:
-    branches: [ "main", "develop" ]
+    branches: [ 
+      "main"
+      , "develop" 
+    ]
 
 jobs:
   build:
@@ -29,7 +32,9 @@ jobs:
         java -version
         ./gradlew build --no-daemon
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag deepuvsdeepu/spring-boot-sample:latest
+      run: |
+        cd spring-boot-sample
+        docker build . --file Dockerfile --tag deepuvsdeepu/spring-boot-sample:latest
       # $(date +%s)
     - name: Docker push
       run: docker push deepuvsdeepu/spring-boot-sample
