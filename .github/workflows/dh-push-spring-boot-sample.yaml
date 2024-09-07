@@ -9,6 +9,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
+    # https://github.com/actions/setup-java
+    - uses: actions/setup-java@v4
+      with:
+        distribution: 'corretto'
+        java-version: '21'
+        cache: 'gradle'
     - name: docker login
       env:
         DOCKER_USER: ${{secrets.DOCKER_USER}}
@@ -21,7 +27,7 @@ jobs:
         which java
         whereis java
         java -version
-        ./gradlew build
+        ./gradlew build --no-daemon
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag deepuvsdeepu/spring-boot-sample:latest
       # $(date +%s)
