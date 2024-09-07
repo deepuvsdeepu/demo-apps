@@ -20,3 +20,9 @@ dependencies {
 tasks.named('test') {
 	useJUnitPlatform()
 }
+
+tasks {
+    bootJar {
+		archiveClassifier = 'full'
+    }
+}
